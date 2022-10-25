@@ -22,9 +22,9 @@
         <td> {{ animal.animalDetail.dateBrought }}</td>
         <td class="text-center">
           <router-link :to="{ 'name': 'AnimalEditor' }" href="#" class="text-blue-500 underline" 
-          @click="updateAnimal(index)"><font-awesome-icon icon="fa-regular fa-pen-to-square" /></router-link> |
+          @click="updateAnimal(index)"><font-awesome-icon icon="fa-solid fa-pencil" /></router-link> |
           <button href="#" class="text-red-500 underline" @click="deleteAnimal(index)">
-          <font-awesome-icon icon="fa-regular fa-trash-can" /></button>
+          <font-awesome-icon icon="fa-solid fa-trash" /></button>
         </td>
       </tr>
     </table>

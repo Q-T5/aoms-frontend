@@ -16,7 +16,7 @@
       <button class="daisyui-btn daisyui-btn-circle " @click="componentRemount++" 
       :to="{ 'name': 'AnimalEditor' }">
       <font-awesome-icon 
-      :icon="$route.path === '/dashboard/management/list-view'? 'fa-regular fa-hourglass' : 'fa-regular fa-plus-square'" 
+      :icon="$route.path === '/dashboard/management/list-view'? 'fa-solid fa-repeat' : 'fa-solid fa-add'" 
       class="text-2xl" />
       </button>
     </div>

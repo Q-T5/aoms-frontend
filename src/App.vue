@@ -16,7 +16,7 @@
 
   <teleport to="#switch-themes">
     <div class="theme-change">
-      <font-awesome-icon :icon="darkThemeOff ? 'fa-regular fa-sun' : 'fa-regular fa-moon'" />
+      <font-awesome-icon :icon="darkThemeOff ? 'fa-solid fa-sun' : 'fa-solid fa-moon'" />
       <div class="daisyui-tooltip daisyui-tooltip-left" data-tip="change theme">
         <input type="checkbox" class="daisyui-toggle rounded-full border-gray-500 outline-none" 
         @click="$store.commit('changeAppTheme')" v-model="darkThemeOff">

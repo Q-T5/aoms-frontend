@@ -5,20 +5,11 @@ import './tailwind.css'
 import router from './router'
 import mitt from 'mitt'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import 
-    {
-        faUserCircle,
-        faArrowAltCircleRight,
-        faMoon,
-        faSun,
-        faCompass,
-        faHourglass,
-        faSquarePlus,
-        faTrashCan,
-        faPenToSquare
-    } from '@fortawesome/free-regular-svg-icons'
 import { faJava, faVuejs } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { 
+    faHome, faPowerOff, faUser, faSun, faMoon, faPencil, faTrash, faAdd, faRepeat
+ } from '@fortawesome/free-solid-svg-icons'
 
 const notifModule = {
     state() {
@@ -96,8 +87,7 @@ const emitter = mitt();
 const app = createApp(App);
 
 library.add(
-    faUserCircle, faArrowAltCircleRight, faMoon, faSun, faJava, faVuejs, faCompass,
-    faHourglass, faSquarePlus, faTrashCan, faPenToSquare
+    faMoon, faSun, faJava, faVuejs,faHome, faPowerOff, faUser, faPencil, faTrash, faAdd, faRepeat
 );
 
 app.config.globalProperties.emitter = emitter;
