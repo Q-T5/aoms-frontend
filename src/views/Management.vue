@@ -1,6 +1,6 @@
 <template>
   <div class="w-3/4 max-w-[75%]">
-    <h1 class="text-3xl font-roboto inline-flex">Animal Management Dashboard
+    <h1 class="text-2xl font-roboto inline-flex items-center">Animal Management Dashboard
       <img src="../assets/feather-svgrepo-com.svg" alt="app-icon" class="w-8 ml-2">
     </h1>
     <div class="grid grid-cols-3 h-10 items-end mb-1">
