@@ -183,7 +183,7 @@
 <script>
 import AnimalEditorMixin from '../mixins/AnimalEditorMixin.js';
 export default {
-  "name": "AnimalEditor",
+  "name": "EditorView",
   "mixins": [AnimalEditorMixin],
   mounted() {
     this.$refs.petnameRef.focus();
