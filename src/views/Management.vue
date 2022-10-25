@@ -6,7 +6,7 @@
     <div class="grid grid-cols-3 h-10 items-end mb-1">
       <router-link :to="{ 'name': 'GeneralView' }" class="active-tab">General View</router-link>
       <router-link :to="{ 'name': 'ListView' }" class="active-tab">List View</router-link>
-      <router-link :to="{ 'name': 'AnimalEditor' }" class="active-tab">Editor View</router-link>
+      <router-link :to="{ 'name': 'EditorView' }" class="active-tab">Editor View</router-link>
     </div>
   </div>
   <router-view :key="componentRemount" v-slot="{ Component }" class="w-[85%] max-w-[85%] h-screen max-h-screen 

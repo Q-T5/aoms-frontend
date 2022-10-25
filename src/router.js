@@ -34,8 +34,8 @@ const router = createRouter({
                         },
                         {
                             "path": "/dashboard/management/new-animal",
-                            "component": () => import("/src/views/AnimalEditor.vue"),
-                            "name": "AnimalEditor"
+                            "component": () => import("/src/views/EditorView.vue"),
+                            "name": "EditorView"
                         }
                     ]
                 },
