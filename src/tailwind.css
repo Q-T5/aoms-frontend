@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.router-link-active {
+    @apply text-blue-500;
+}
+
+.router-link-exact-active.active-tab {
+    @apply rounded-none bg-transparent border-b-4 border-b-blue-500;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(50%);
+}
+
+@layer components {
+    .form-labels {
+        @apply font-poppins tracking-wide text-blue-500 font-semibold text-sm;
+    }
+
+    .misc-button {
+        @apply daisyui-btn border-none bg-transparent hover:bg-transparent text-blue-500 
+        text-sm tracking-wide no-animation disabled:bg-transparent font-roboto uppercase px-0
+        hover:underline;
+    }
+
+    .table-row {
+        @apply px-0.5 font-nunito border-b-[0.5px] border-b-blue-500 hover:bg-secondary;
+    }
+
+    .signup-button {
+        @apply daisyui-btn border-none bg-transparent hover:bg-transparent text-blue-500 
+        text-base tracking-wide no-animation disabled:bg-transparent font-roboto uppercase
+        hover:underline;
+    }
+
+    .login-button {
+        @apply daisyui-btn rounded-sm my-2 mr-2 bg-blue-500 hover:bg-blue-500 border-none
+        text-white/80 text-base tracking-wide no-animation font-roboto uppercase;
+    }
+
+    .save-or-update-button {
+        @apply daisyui-btn rounded-sm bg-blue-500 border-none font-roboto uppercase 
+        w-[4.5rem] hover:bg-blue-500;
+    }
+
+    .form-button {
+        @apply daisyui-btn hover:bg-blue-500 rounded-sm bg-blue-500 border-none p-2 text-white text-sm 
+        font-semibold tracking-wide no-animation font-roboto uppercase disabled:bg-gray-400
+        disabled:text-gray-700;
+    }
+
+    .search-button {
+        @apply rounded-full daisyui-btn daisyui-btn-sm bg-blue-500 border-none absolute 
+        right-0 no-animation lowercase font-nunito;
+    }
+
+    .disabled-inputs {
+        @apply daisyui-input border-2 rounded-none disabled:bg-transparent border-t-0 border-l-0 border-r-0
+        font-nunito text-lg appearance-none disabled:border-blue-500 p-0.5;
+    }
+}
+
+.sidebar-buttons {
+    @apply p-1 text-3xl;
+}
+
+.active-tab {
+    @apply text-base font-roboto tracking-wide font-medium text-center pb-0; 
+}
+
+.form-input-boxes {
+    @apply daisyui-input border-2 border-t-0 border-l-0 border-r-0 rounded-none border-gray-300 
+    font-nunito font-light text-base appearance-none focus:outline-none 
+    focus:border-blue-500 p-0.5 tracking-wide;
+}
+
+.textarea-style {
+    @apply daisyui-textarea border-2 rounded-[0.30rem] border-gray-300 text-base focus:outline-none 
+    focus:border-blue-500 scrollbar-thin scrollbar-thumb-white font-nunito tracking-wide disabled:bg-transparent;
+}
+
+.date-pickers {
+    @apply daisyui-input border-2 border-t-0 border-l-0 border-r-0 rounded-none border-gray-300 
+    font-nunito font-light text-base appearance-none focus:outline-none 
+    focus:border-blue-500 p-0.5 disabled:bg-transparent opacity-75;
+}
+
+.form-error-notif {
+    @apply daisyui-alert-error flex border-l-8 rounded-md p-2 space-x-1 font-roboto text-base;
+}
+
+.scroll-buttons {
+    @apply daisyui-btn w-8 opacity-70 hover:opacity-100 border-none font-roboto 
+    uppercase absolute top-[9.5rem] rounded-sm;
+}
+
+.notif-style {
+    @apply fixed bottom-2 rounded-md w-auto font-roboto text-base;
+}
+
+.table-headers {
+    @apply text-base py-0 text-left font-roboto font-normal text-white;
+}
+
+.theme-change {
+    @apply bg-orange-500/75 -right-14 p-2 fixed hover:right-0 top-1/2 inline-flex 
+    items-center rounded-l-md space-x-2;
+}
+
+.quote {
+    @apply absolute top-1/2 italic text-2xl font-serif opacity-80 inline-flex flex-col 
+    items-center left-1 right-2 text-white bg-gray-500/30 rounded p-2;
+}
+
+.search-box {
+    @apply daisyui-input daisyui-input-sm rounded-full w-[23rem] py-1
+    font-normal focus:outline-none outline-none font-nunito;
+}
