@@ -33,7 +33,7 @@ const router = createRouter({
                             "name": "ListView"
                         },
                         {
-                            "path": "/dashboard/management/new-animal",
+                            "path": "/dashboard/management/editor-view",
                             "component": () => import("/src/views/EditorView.vue"),
                             "name": "EditorView"
                         }
