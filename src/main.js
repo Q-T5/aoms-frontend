@@ -8,7 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faJava, faVuejs } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { 
-    faHome, faPowerOff, faUser, faSun, faMoon, faPencil, faTrash, faAdd, faRepeat
+    faHome, faPowerOff, faUser, faSun, faMoon, faPencil, faTrash, faAdd, faRepeat, faEye
  } from '@fortawesome/free-solid-svg-icons'
 
 const notifModule = {
@@ -87,7 +87,7 @@ const emitter = mitt();
 const app = createApp(App);
 
 library.add(
-    faMoon, faSun, faJava, faVuejs,faHome, faPowerOff, faUser, faPencil, faTrash, faAdd, faRepeat
+    faMoon, faSun, faJava, faVuejs,faHome, faPowerOff, faUser, faPencil, faTrash, faAdd, faRepeat, faEye
 );
 
 app.config.globalProperties.emitter = emitter;
