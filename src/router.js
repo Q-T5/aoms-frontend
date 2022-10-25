@@ -28,6 +28,11 @@ const router = createRouter({
                     "name": "Management",
                     "children": [
                         {
+                            "path": "/dashboard/management/general-view",
+                            "component": () => import("/src/views/GeneralView.vue"),
+                            "name": "GeneralView"
+                        },
+                        {
                             "path": "/dashboard/management/list-view",
                             "component": () => import("/src/views/ListView.vue"),
                             "name": "ListView"
