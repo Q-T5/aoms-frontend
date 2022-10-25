@@ -21,9 +21,9 @@
         <td> {{ animal.age }}</td>
         <td> {{ animal.animalDetail.dateBrought }}</td>
         <td class="text-center">
-          <router-link :to="{ 'name': 'AnimalEditor' }" href="#" class="text-blue-500 underline" 
+          <router-link :to="{ 'name': 'EditorView' }" class="text-blue-500/80 text-sm" 
           @click="updateAnimal(index)"><font-awesome-icon icon="fa-solid fa-pencil" /></router-link> |
-          <button href="#" class="text-red-500 underline" @click="deleteAnimal(index)">
+          <button class="text-red-500/80 text-sm" @click="deleteAnimal(index)">
           <font-awesome-icon icon="fa-solid fa-trash" /></button>
         </td>
       </tr>
@@ -36,7 +36,8 @@ export default {
   "name": "ListView",
   data() {
     return {
-      "animalList": []
+      "animalList": [],
+      "searchId": ""
     }
   },
   "methods": {
