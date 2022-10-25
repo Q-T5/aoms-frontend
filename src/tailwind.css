@@ -58,7 +58,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     .search-button {
         @apply rounded-full daisyui-btn daisyui-btn-sm bg-blue-500 border-none absolute 
-        right-0 no-animation lowercase font-nunito;
+        right-[0] no-animation lowercase font-nunito;
     }
 
     .disabled-inputs {
@@ -120,6 +120,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .search-box {
-    @apply daisyui-input daisyui-input-sm rounded-full w-[23rem] py-1
+    @apply daisyui-input daisyui-input-sm rounded-full w-[23rem] py-2
     font-normal focus:outline-none outline-none font-nunito;
 }
