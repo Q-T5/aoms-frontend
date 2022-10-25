@@ -20,6 +20,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @layer components {
+    .form-input-boxes {
+        @apply daisyui-input border-2 border-t-0 border-l-0 border-r-0 rounded-none border-gray-300 
+        font-nunito font-light text-base appearance-none focus:outline-none 
+        focus:border-blue-500 p-0.5 tracking-wide bg-transparent;
+    }
+    
     .form-labels {
         @apply font-poppins tracking-wide text-blue-500 font-semibold text-sm;
     }
@@ -75,12 +81,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     @apply text-base font-roboto tracking-wide font-medium text-center pb-0; 
 }
 
-.form-input-boxes {
-    @apply daisyui-input border-2 border-t-0 border-l-0 border-r-0 rounded-none border-gray-300 
-    font-nunito font-light text-base appearance-none focus:outline-none 
-    focus:border-blue-500 p-0.5 tracking-wide;
-}
-
 .textarea-style {
     @apply daisyui-textarea border-2 rounded-[0.30rem] border-gray-300 text-base focus:outline-none 
     focus:border-blue-500 scrollbar-thin scrollbar-thumb-white font-nunito tracking-wide disabled:bg-transparent;
@@ -115,7 +115,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .quote {
-    @apply absolute top-1/2 italic text-2xl font-serif opacity-80 inline-flex flex-col 
+    @apply top-1/2 italic text-xl font-serif opacity-80 inline-flex flex-col 
     items-center left-1 right-2 text-white bg-gray-500/30 rounded p-2;
 }
 
