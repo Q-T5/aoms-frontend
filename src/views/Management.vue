@@ -17,10 +17,10 @@
     <div class="daisyui-tooltip daisyui-tooltip-top absolute bottom-1 right-48" 
     :data-tip="$route.path === '/dashboard/management/list-view'? 'refresh list' : 'add new animal'">
       <button class="daisyui-btn daisyui-btn-circle " @click="componentRemount++" 
-      :to="{ 'name': 'AnimalEditor' }">
+      :to="{ 'name': 'AnimalEditor' }" v-show="$route.path !== '/dashboard/management/general-view'">
       <font-awesome-icon 
       :icon="$route.path === '/dashboard/management/list-view'? 'fa-solid fa-repeat' : 'fa-solid fa-add'" 
-      class="text-2xl" />
+      class="text-xl" />
       </button>
     </div>
   </router-view>
