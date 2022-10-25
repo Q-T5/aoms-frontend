@@ -5,7 +5,7 @@
         <div>
           <img src="../assets/cat_image.jpg" alt="cat-image" class="h-96 w-96 rounded-md" />
         </div>
-        <div class="ml-2">
+        <div class="ml-4">
           <h1 class="text-3xl font-roboto tracking-wide text-center text-white">STAFF LOGIN</h1>
           <form class="flex flex-col space-y-3">
             <div class="inline-flex flex-col space-y-1">
@@ -23,11 +23,9 @@
               placeholder="enter password" v-model="password" />
               <font-awesome-icon icon="fa-solid fa-eye" class="absolute bottom-[15px] right-2" @click="inputType == 'password' ? inputType = 'text' : inputType = 'password' " />
             </div>
-            <div class="w-full flex justify-center">
               <router-link :to="{ 'name': 'GeneralView' }" type="submit" class="login-button" 
               @click="$store.commit('displayNotification', ['successfully logged in', 
               'daisyui-alert-success', 'success.svg'])">Login</router-link>
-            </div>
           </form>
         </div>
       </div>
