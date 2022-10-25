@@ -35,10 +35,10 @@ export default {
     }
   },
   mounted() {
-    this.$router.push({ name: 'ListView' });
+    this.$router.push({ name: 'GeneralView' });
   },
   activated() {
-    this.$router.push({ name: 'ListView' });
+    this.$router.push({ name: 'GeneralView' });
   }
 }
 </script>
