@@ -22,7 +22,7 @@
             placeholder="enter password" v-model="password" />
           </div>
           <div>
-            <router-link :to="{ 'name': 'Management' }" type="submit" class="login-button" 
+            <router-link :to="{ 'name': 'GeneralView' }" type="submit" class="login-button" 
             @click="$store.commit('displayNotification', ['successfully logged in', 
             'daisyui-alert-success', 'success.svg'])">Login</router-link>
             <router-link :to="{ 'name': 'Signup' }" class="signup-button">Sign Up</router-link>
