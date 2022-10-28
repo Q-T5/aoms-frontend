@@ -1,11 +1,11 @@
 <template>
   <div class="flex justify-center" style="background-image: url('/src/assets/login_wallpaper.jpg');">
     <div class="grid h-screen place-items-center">
-      <div class="w-[50rem] shadow-xl p-2 rounded flex">
+      <div class="w-[50rem] shadow-xl rounded flex">
         <div>
-          <img src="../assets/cat_image.jpg" alt="cat-image" class="h-96 w-96 rounded-md" />
+          <img src="../assets/cat_image.jpg" alt="cat-image" class="h-96 w-96" />
         </div>
-        <div class="ml-4">
+        <div class="p-2">
           <h1 class="text-3xl font-roboto tracking-wide text-center text-white">STAFF LOGIN</h1>
           <form class="flex flex-col space-y-3">
             <div class="inline-flex flex-col space-y-1">
@@ -32,9 +32,9 @@
     </div>
   </div>
   <footer class="w-full flex fixed bottom-0.5 font-nunito font-semibold justify-center text-lg">
-    <p class="inline-flex text-white items-center">Made with <span class="text-red-500 mx-1">&hearts;</span> in 
-      <img src="/src/assets/java-logo.svg" alt="Java Logo" class="w-7 mx-1"> and
-      <img src="/src/assets/vue.svg" alt="Vue Logo" class="w-6 mx-1">
+    <p class="inline-flex text-white items-center text-sm">Made with <span class="text-red-500 mx-1">&hearts;</span> in 
+      <img src="/src/assets/java-logo.svg" alt="Java Logo" class="w-4 mx-1"> and
+      <img src="/src/assets/vue.svg" alt="Vue Logo" class="w-[0.80rem] mx-1">
     </p>
   </footer>
 </template>
