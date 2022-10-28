@@ -15,11 +15,11 @@
               </p>
               <label for="username-box" class="form-labels">Staff ID</label>
               <input type="text" id="username-box" placeholder="enter staff id" 
-              class="form-input-boxes text-white text-xl" v-model="username" ref="usernameRef" />
+              class="form-input-boxes text-white text-lg" v-model="username" ref="usernameRef" />
             </div>
             <div class="inline-flex flex-col space-y-1 relative">
               <label for="password-box" class="form-labels">Password</label>
-              <input :type="inputType" id="password-box" class="form-input-boxes text-white text-xl" 
+              <input :type="inputType" id="password-box" class="form-input-boxes text-white text-lg" 
               placeholder="enter password" v-model="password" />
               <font-awesome-icon icon="fa-solid fa-eye" class="absolute bottom-[15px] right-2" @click="inputType == 'password' ? inputType = 'text' : inputType = 'password' " />
             </div>
