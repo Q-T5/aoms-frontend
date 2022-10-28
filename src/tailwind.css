@@ -71,6 +71,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         @apply daisyui-input border-2 rounded-none disabled:bg-transparent border-t-0 border-l-0 border-r-0
         font-nunito text-lg appearance-none disabled:border-blue-500 p-0.5;
     }
+
+    .autogen-button {
+        @apply absolute right-12 bottom-3 text-sm font-nunito tracking-wide text-blue-500 
+        hover:underline font-semibold;
+    }
 }
 
 .sidebar-buttons {
@@ -122,4 +127,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .search-box {
     @apply daisyui-input daisyui-input-sm rounded-full w-[23rem] py-2
     font-normal focus:outline-none outline-none font-nunito;
+}
+
+.user-form-action-button {
+    @apply daisyui-btn bg-blue-500 border-none no-animation w-full rounded-md mt-2 
+    text-base tracking-wide font-roboto uppercase hover:bg-blue-500;
 }
