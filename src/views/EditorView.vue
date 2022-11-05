@@ -30,13 +30,11 @@
         <div class="flex space-x-8 mt-1">
           <div class="w-1/2 flex flex-col">
             <label for="age" class="form-labels">Age</label>
-            <input type="text" id="age" placeholder="animal's age (years)" v-model="animal.age"
-            class="form-input-boxes" />
+            <input type="text" id="age" placeholder="animal's age (years)" v-model="animal.age" class="form-input-boxes" />
           </div>
           <div class="w-1/2 flex flex-col">
             <label for="date-brought" class="form-labels">Date Brought Into Orphanage</label>
-            <input type="date" id="date-brought" v-model="animal.animalDetail.dateBrought"
-            class="date-pickers" />
+            <input type="date" id="date-brought" v-model="animal.dateBrought" class="date-pickers" />
           </div>
         </div>
       </form>
@@ -191,9 +189,9 @@ export default {
       this.action = "update";
       this.displayFormError = false;
       this.animal = targetAnimal;
-      this.animal.animalId = targetAnimal.id;
-      this.animal.animalDetail.animalId = targetAnimal.animalDetail.id;
-      this.animalProgress.animalId = targetAnimal.id;
+      this.animal.animalId = targetAnimal.animalId;
+      this.animal.animalDetail.animalId = targetAnimal.animalDetail.animalId;
+      this.animalProgress.animalId = targetAnimal.animalId;
       this.getMedicalRecord(targetAnimal.id);
     })
   }
@@ -204,16 +202,13 @@ export default {
   #btn-previous {
     left: 0.25rem;
   }
-
   #btn-next {
     right: 0.25rem;
   }
-
   ::-webkit-scrollbar-thumb {
     background: #888; 
     border-radius: 10px;
   }
-
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 10px;
