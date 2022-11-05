@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col">
-    <div class="relative border-blue-500 border-[1px] rounded-full self-center outline-none mb-1 w-fit">
+  <div class="flex flex-col mt-0.5">
+    <div class="relative border-blue-500 border-[1px] rounded-full self-center outline-none mb-0.5 w-fit">
       <input type="number" placeholder="Search by animal id... " class="search-box" maxlength="25"
       v-model="searchId" />
       <button class="search-button">Search</button>
