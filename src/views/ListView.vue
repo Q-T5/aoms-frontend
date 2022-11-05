@@ -15,11 +15,11 @@
         <th class="text-base py-0 text-center font-roboto font-normal text-white">Action</th>
       </tr>
       <tr class="table-row" v-for="(animal, index) in animalList" :key="animal.index">
-        <td>{{ animal.id }}</td>
+        <td> {{ animal.animalId }} </td>
         <td> {{ animal.petName }}</td>
         <td> {{ animal.commonName }}</td>
         <td> {{ animal.age }}</td>
-        <td> {{ animal.animalDetail.dateBrought }}</td>
+        <td> {{ animal.dateBrought }}</td>
         <td class="text-center">
           <router-link :to="{ 'name': 'EditorView' }" class="text-blue-500/80 text-sm" 
           @click="updateAnimal(index)"><font-awesome-icon icon="fa-solid fa-pencil" /></router-link> |
