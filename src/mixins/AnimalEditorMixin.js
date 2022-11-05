@@ -1,4 +1,4 @@
-import MedProg from '../medicalprogress.js';
+import MedProg from '../medicalprogress.js'
 export default {
     data() {
         return {
@@ -6,11 +6,11 @@ export default {
             "animal": {
                 "animalId": null,
                 "commonName": "",
+                "dateBrought": null,
                 "petName": "",
                 "age": null,
                 "animalDetail": {
                     "animalId": null,
-                    "dateBrought": null,
                     "dateAdopted": null,
                     "adopteeName": "",
                     "contactNumber": "",
@@ -49,6 +49,7 @@ export default {
               this.displayFormError = true;
             } else {
               this.displayFormError = false;
+              console.log("Animal details: " + JSON.stringify(this.animal, null, 2));
               fetch("/api/animals/createAnimal", {
                 "method": "POST",
                 "headers": {
@@ -64,9 +65,9 @@ export default {
               })
               .then((data) => {
                 this.animal = data;
-                this.animal.animalId = data.id;
-                this.animal.animalDetail.animalId = data.animalDetail.id;
-                this.animalProgress.animalId = data.id;
+                this.animal.animalId = data.animalId;
+                this.animal.animalDetail.animalId = data.animalDetail.animalId;
+                this.animalProgress.animalId = data.animalId;
                 this.emitter.emit("refreshList");
               })
               .catch((error) => {
