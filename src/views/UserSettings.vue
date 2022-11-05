@@ -1,12 +1,5 @@
 <template>
   <div class="w-full h-screen flex flex-col">
-    <nav class="h-12 shadow-lg flex items-center font-roboto justify-between px-2">
-      <h1 class="text-2xl">Staff Management Panel</h1>
-      <div class="relative border-blue-500 border-[1px] rounded-full self-center outline-none mb-1 w-fit">
-        <input type="text" placeholder="Search by staff by id... " class="search-box" maxlength="35" v-model="searchId" />
-        <button class="search-button">Search</button>
-      </div>
-    </nav>
     <div class="w-full h-full py-2 flex justify-center">
       <form @submit.prevent class="w-[50rem] py-2 h-full flex flex-col space-y-3 shadow-lg rouded-lg">
         <div class="flex justify-center h-fit max-h-fit">
