@@ -1,11 +1,4 @@
 <template>
-  <div class="w-[80%] max-w-[80%]">
-    <div class="grid grid-cols-3 h-10 items-end ">
-      <router-link :to="{ 'name': 'GeneralView' }" class="active-tab">General View</router-link>
-      <router-link :to="{ 'name': 'ListView' }" class="active-tab">List View</router-link>
-      <router-link :to="{ 'name': 'EditorView' }" class="active-tab">Editor View</router-link>
-    </div>
-  </div>
   <router-view :key="componentRemount" v-slot="{ Component }" class="w-[80%] max-w-[80%] h-screen max-h-screen 
   overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 relative">
     <keep-alive>
