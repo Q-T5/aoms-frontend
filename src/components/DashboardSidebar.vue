@@ -1,18 +1,19 @@
 <template>
-  <div class="flex flex-col h-screen justify-center p-1 space-y-4 w-fit shadow-md">
-    <div class="flex flex-col">
-      <div class="daisyui-tooltip daisyui-tooltip-right" data-tip="manage animals">
-        <router-link :to="{ 'name': 'Management' }"><font-awesome-icon icon="fa-solid fa-home" 
-        class="sidebar-buttons" /></router-link>
+  <div class="flex flex-col justify-between shadow-xl shadow-gray-700 items-center py-1">
+    <img src="../assets/feather-svgrepo-com.svg" alt="app-icon" class="w-8 ml-2" />
+    <div class="flex flex-col w-[95%] rounded-md space-y-3">
+      <router-link :to="{ 'name': 'Management' }" class="navbar-buttons mt-2">Home</router-link>
+      <div class="flex flex-col items-start ml-4 space-y-3">
+        <router-link :to="{ 'name': 'GeneralView' }" class="active-tab">General View</router-link>
+        <router-link :to="{ 'name': 'ListView' }" class="active-tab">List View</router-link>
+        <router-link :to="{ 'name': 'EditorView' }" class="active-tab">Editor View</router-link>
       </div>
-      <div class="daisyui-tooltip daisyui-tooltip-right" data-tip="user settings">
-        <router-link :to="{ 'name': 'UserSettings' }" ><font-awesome-icon icon="fa-solid fa-user" class="sidebar-buttons" /></router-link>
-      </div>
-      <div class="daisyui-tooltip daisyui-tooltip-right" data-tip="logout">
-        <router-link :to="{ 'name': 'Login' }"
-        @click="$store.commit('displayNotification', ['successfully logged out', 'daisyui-alert-success', 'success.svg'])">
-        <font-awesome-icon icon="fa-soild fa-power-off" class="sidebar-buttons" /></router-link>
-      </div>
+      <router-link :to="{ 'name': 'UserSettings' }" class="navbar-buttons mb-2">Users</router-link>
+    </div>
+    <div>
+      <router-link :to="{ 'name': 'Login' }"
+      @click="$store.commit('displayNotification', ['successfully logged out', 
+      'daisyui-alert-success', 'success.svg'])" class="logout-button">Logout</router-link>
     </div>
   </div>
 </template>
