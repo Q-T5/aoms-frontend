@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <dashboard-sidebar class="relative left-0" />
+    <dashboard-sidebar class="w-[15%]" />
     <dashboard-main-panel />
   </div>
 </template>
