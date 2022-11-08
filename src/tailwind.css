@@ -8,11 +8,11 @@
 @tailwind utilities;
 
 .router-link-active {
-    @apply text-blue-500;
+    @apply  bg-blue-400;
 }
 
 .router-link-exact-active.active-tab {
-    @apply rounded-none bg-transparent border-b-4 border-b-blue-500;
+    @apply rounded-none bg-transparent border-b-[2.5px] border-b-blue-400;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -37,7 +37,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     .table-row {
-        @apply px-0.5 font-nunito border-b-[0.5px] border-b-blue-500 hover:bg-secondary;
+        @apply px-0.5 font-nunito border-b-[0.5px] border-b-blue-500 hover:text-blue-500 hover:cursor-pointer;
     }
 
     .signup-button {
@@ -76,10 +76,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         @apply absolute right-12 bottom-3 text-sm font-nunito tracking-wide text-blue-500 
         hover:underline font-semibold;
     }
-}
 
-.sidebar-buttons {
-    @apply p-1 my-2 text-2xl;
+    .navbar-buttons {
+        @apply text-lg mx-1 bg-slate-500/40 rounded-md pl-1 py-1;
+    }
+
+    .user-list-edit-btn {
+        @apply daisyui-btn border-none rounded-full;
+    }
 }
 
 .active-tab {
@@ -126,10 +130,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .search-box {
     @apply daisyui-input daisyui-input-sm rounded-full w-[23rem] py-2
-    font-normal focus:outline-none outline-none font-nunito;
+    focus:outline-none outline-none font-nunito;
 }
 
 .user-form-action-button {
     @apply daisyui-btn bg-blue-500 border-none no-animation w-full rounded-md mt-2 
     text-base tracking-wide font-roboto uppercase hover:bg-blue-500;
+}
+
+.logout-button {
+    @apply daisyui-btn rounded-full my-2 mr-2 bg-blue-500 hover:bg-blue-500 border-none
+    text-white/80 text-base tracking-wide no-animation font-roboto uppercase w-full;
+}
+
+.search-system-users {
+    @apply daisyui-input h-10 w-full rounded-md border-blue-500 focus:outline-none outline-none
+    py-2 uppercase placeholder:lowercase font-nunito;
 }
