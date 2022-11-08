@@ -5,7 +5,7 @@
       v-model="searchId" />
       <button class="search-button">Search</button>
     </div>
-    <table class="table-auto w-full">
+    <table class="w-full">
       <tr class="bg-blue-500 font-poppins">
         <th class="table-headers">Animal Id</th>
         <th class="table-headers">Pet Name</th>
