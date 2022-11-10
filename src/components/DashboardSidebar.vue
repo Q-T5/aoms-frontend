@@ -3,7 +3,7 @@
     <img src="../assets/feather-svgrepo-com.svg" alt="app-icon" class="w-8 ml-2" />
     <div class="flex flex-col w-[95%] rounded-md space-y-3">
       <router-link :to="{ 'name': 'Management' }" class="navbar-buttons mt-2">Home</router-link>
-      <div class="flex flex-col items-start ml-4 space-y-3">
+      <div class="flex flex-col items-start ml-6 space-y-3">
         <router-link :to="{ 'name': 'GeneralView' }" class="active-tab">General View</router-link>
         <router-link :to="{ 'name': 'ListView' }" class="active-tab">List View</router-link>
         <router-link :to="{ 'name': 'EditorView' }" class="active-tab">Editor View</router-link>
@@ -12,7 +12,7 @@
     </div>
     <div>
       <router-link :to="{ 'name': 'Login' }"
-      @click="$store.commit('displayNotification', ['successfully logged out', 
+      @click="$store.commit('LOGOUT_USER', {}),$store.commit('displayNotification', ['successfully logged out', 
       'daisyui-alert-success', 'success.svg'])" class="logout-button">Logout</router-link>
     </div>
   </div>
