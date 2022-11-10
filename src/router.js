@@ -3,6 +3,7 @@ import Login from "/src/views/Login.vue"
 import Dashboard from "/src/views/Dashboard.vue"
 import NotFound from "/src/views/NotFound.vue"
 import Management from "/src/views/Management.vue"
+import store from "./store";
 
 const router = createRouter({
     "history": createWebHistory(),
@@ -18,7 +19,7 @@ const router = createRouter({
             "name": "Dashboard",
             "children": [
                 {
-                    "path": "/dashboard/management",
+                    "path": "/dashboard/animals",
                     "component": Management,
                     "name": "Management",
                     "children": [
@@ -40,7 +41,7 @@ const router = createRouter({
                     ]
                 },
                 {
-                    "path": "/dashboard/user-settings",
+                    "path": "/dashboard/users",
                     "component": () => import("/src/views/UserSettings.vue"),
                     "name": "UserSettings"
                 },
@@ -51,6 +52,14 @@ const router = createRouter({
             "component": NotFound
         }
     ]
-})
+});
+
+router.beforeEach(async (to, from) => {
+    if(to.name === "GeneralView")  {
+        if(store.getters.getLoggedInState === false) {
+            return { name: "Login" }
+        }
+    }
+});
 
 export default router;
