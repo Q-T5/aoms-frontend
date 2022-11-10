@@ -66,9 +66,42 @@ const themeModule = {
     }
 }
 
+const userManagementModule = {
+    state() {
+        return {
+            "userLoggedIn": false,
+            "userCredentials": {
+                "token": "",
+                "type": "",
+                "staffId": "",
+                "firstName": "",
+                "roles": []
+            }
+        }
+    },
+    "mutations": {
+        LOGIN_USER(state, loggedInUserCredentials) {
+            state.userCredentials = loggedInUserCredentials;
+            state.userLoggedIn = true;
+        },
+        LOGOUT_USER(state, loggedInUserCredentials) {
+            state.userCredentials = loggedInUserCredentials;
+            state.userLoggedIn = false;
+        }
+    },
+    "getters": {
+        getUserRoles(state) {
+            return state.userCredentials.roles;
+        },
+        getLoggedInState(state) {
+            return state.userLoggedIn;
+        }
+    },
+}
+
 const store = createStore({
     "modules": {
-        notifModule, animalMedicalRecordsModule, themeModule
+        notifModule, animalMedicalRecordsModule, themeModule, userManagementModule
     }
 })
 
