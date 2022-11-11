@@ -21,6 +21,5 @@ library.add(
 app.config.globalProperties.emitter = emitter;
 app .use(router)
     .use(store)
-    .use(store)
     .component("font-awesome-icon", FontAwesomeIcon)
 .mount('#app');

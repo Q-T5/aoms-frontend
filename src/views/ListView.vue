@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mt-0.5">
+  <div class="flex flex-col py-2">
     <div class="relative border-blue-500 border-[1px] rounded-full self-center outline-none mb-0.5 w-fit">
       <input type="number" placeholder="Search by animal id... " class="search-box" maxlength="25"
       v-model="searchId" />

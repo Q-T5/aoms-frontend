@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import Login from "/src/views/Login.vue"
 import Dashboard from "/src/views/Dashboard.vue"
 import NotFound from "/src/views/NotFound.vue"
-import Management from "/src/views/Management.vue"
 import store from "./store";
 
 const router = createRouter({
@@ -19,26 +18,19 @@ const router = createRouter({
             "name": "Dashboard",
             "children": [
                 {
-                    "path": "/dashboard/animals",
-                    "component": Management,
-                    "name": "Management",
-                    "children": [
-                        {
-                            "path": "/dashboard/management/general-view",
-                            "component": () => import("/src/views/GeneralView.vue"),
-                            "name": "GeneralView"
-                        },
-                        {
-                            "path": "/dashboard/management/list-view",
-                            "component": () => import("/src/views/ListView.vue"),
-                            "name": "ListView"
-                        },
-                        {
-                            "path": "/dashboard/management/editor-view",
-                            "component": () => import("/src/views/EditorView.vue"),
-                            "name": "EditorView"
-                        }
-                    ]
+                    "path": "/dashboard/animals/general-view",
+                    "component": () => import("/src/views/GeneralView.vue"),
+                    "name": "GeneralView"
+                },
+                {
+                    "path": "/dashboard/animals/list-view",
+                    "component": () => import("/src/views/ListView.vue"),
+                    "name": "ListView"
+                },
+                {
+                    "path": "/dashboard/animals/editor-view",
+                    "component": () => import("/src/views/EditorView.vue"),
+                    "name": "EditorView"
                 },
                 {
                     "path": "/dashboard/users",
