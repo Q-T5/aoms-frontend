@@ -42,8 +42,14 @@ export default {
   },
   "methods": {
     refreshList() {
+      const authToken = this.$store.getters.getAuthToken;
       try {
-        fetch("/api/animals/getAllAnimals")
+        fetch("/api/animals/getAllAnimals", {
+          "method": "GET",
+          "headers": {
+            "Authorization": authToken
+          }
+        })
         .then((response) => {
           if(response.status === 204) {
           this.$store.commit('displayNotification', ['no animal data to display', 'daisyui-alert-info', 'info.svg']);
@@ -62,10 +68,14 @@ export default {
     },
     deleteAnimal(index) {
       const idToDelete = this.animalList[index].id;
+      const authToken = this.$store.getters.getAuthToken;
       try {
         this.$store.commit("deleteMedicalRecords", idToDelete);
         fetch(`/api/animals/deleteAnimal/${ idToDelete }`, {
-          "method": "DELETE"
+          "method": "DELETE",
+          "headers": {
+            "Authorization": authToken
+          }
         })
         .then((response) => {
           if(response.status === 200) {
@@ -85,8 +95,14 @@ export default {
     }
   },
   mounted() {
+    const authToken = this.$store.getters.getAuthToken;
     try {
-      fetch("/api/animals/getAllAnimals")
+      fetch("/api/animals/getAllAnimals", {
+        "method": "GET",
+        "headers": {
+          "Authorization": authToken
+        }
+      })
       .then((response) => {
         if(response.status === 204) {
           this.$store.commit('displayNotification', ['no animal data to display', 'daisyui-alert-info', 'info.svg']);
