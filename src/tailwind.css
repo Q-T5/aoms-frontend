@@ -37,7 +37,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     .table-row {
-        @apply px-0.5 font-nunito border-b-[0.5px] border-b-blue-500 hover:text-blue-500 hover:cursor-pointer;
+        @apply font-nunito border-b-[0.5px] border-b-blue-500 text-lg hover:cursor-pointer;
     }
 
     .signup-button {
