@@ -45,6 +45,7 @@ export default {
     },
     "methods": {
         createNewAnimal() {
+            const authToken = this.$store.getters.getAuthToken;
             if(this.animal.commonName === "" || this.animal.age === null || this.animal.animalDetail.dateBrought === null) {
               this.displayFormError = true;
             } else {
@@ -53,7 +54,8 @@ export default {
               fetch("/api/animals/createAnimal", {
                 "method": "POST",
                 "headers": {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": authToken
                 },
                 "body": JSON.stringify(this.animal)
               })
@@ -77,6 +79,7 @@ export default {
         },
 
         updateAnimal() {
+            const authToken = this.$store.getters.getAuthToken;
             if(this.animal.commonName === "" || this.animal.age === null || this.animal.animalDetail.dateBrought === null) {
                 this.displayFormError = true;
             } else {
@@ -84,7 +87,8 @@ export default {
                 fetch("/api/animals/updateAnimal", {
                     "method": "PUT",
                     "headers": {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Authorization": authToken
                     },
                     "body": JSON.stringify(this.animal)
                 })
@@ -120,10 +124,12 @@ export default {
         },
 
         createNewMedRecord() {
+            const authToken = this.$store.getters.getAuthToken;
             fetch("/api/animals/newAnimalRecord", {
                 "method": "POST",
                 "headers": {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": authToken
                 },
                 "body": JSON.stringify(this.animalProgress)
             })
@@ -143,10 +149,12 @@ export default {
         },
 
         updateMedicalRecord() {
+            const authToken = this.$store.getters.getAuthToken;
             fetch("/api/animals/updateAnimalRecord", {
                 "method": "PUT",
                 "headers": {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": authToken
                 },
                 "body": JSON.stringify(this.animalProgress)
             })
@@ -166,7 +174,13 @@ export default {
         },
       
         getMedicalRecord(id) {
-            fetch(`/api/animals/getAnimalRecord/${id}`)
+            const authToken = this.$store.getters.getAuthToken;
+            fetch(`/api/animals/getAnimalRecord/${id}`, {
+                "method": "GET",
+                "headers": {
+                    "Authorization": authToken
+                }
+            })
             .then((response) => {
                 return response.json();
             })
