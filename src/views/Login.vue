@@ -59,12 +59,14 @@ export default {
           "body": JSON.stringify(this.userCredentials)
         }).then((response) => {
           if(response.status === 200) {
-            this.$store.commit("LOGIN_USER", response.json());
-            this.$store.commit("displayNotification", ["successful login", "daisyui-alert-success", "success.svg"]);
-            this.$router.push({ name: "GeneralView" });
+            return response.json();
           } else if(response.status === 500) {
-            this.$store.commit("displayNotification", ["invalid login", "daisyui-alert-error", "error.svg"]);
+            this.$store.commit("displayNotification", ["invalid login credentials", "daisyui-alert-error", "error.svg"]);
           }
+        }).then((data) => {
+          this.$store.commit("LOGIN_USER", data);
+          this.$store.commit("displayNotification", ["successful login", "daisyui-alert-success", "success.svg"]);
+          this.$router.push({ name: "GeneralView" });
         }).catch((error) => {
           console.log(`${ error }: Failed to log you in`);
         })
