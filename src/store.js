@@ -87,7 +87,7 @@ const userManagementModule = {
         LOGOUT_USER(state, loggedInUserCredentials) {
             state.userCredentials = loggedInUserCredentials;
             state.userLoggedIn = false;
-        }
+        },
     },
     "getters": {
         getUserRoles(state) {
@@ -95,6 +95,9 @@ const userManagementModule = {
         },
         getLoggedInState(state) {
             return state.userLoggedIn;
+        },
+        getAuthToken(state) {
+            return state.userCredentials.token;
         }
     },
 }
