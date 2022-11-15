@@ -51,6 +51,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         text-white/80 text-base tracking-wide no-animation font-roboto uppercase w-full;
     }
 
+    .passreset-button {
+        @apply daisyui-btn rounded-sm my-2 mr-2 bg-yellow-400 hover:bg-yellow-400 border-none
+        text-white/80 text-base tracking-wide no-animation font-roboto uppercase w-full;
+    }
+
     .save-or-update-button {
         @apply daisyui-btn rounded-sm bg-blue-500 border-none font-roboto uppercase 
         w-[4.5rem] hover:bg-blue-500;
@@ -124,7 +129,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .quote {
-    @apply top-1/2 italic text-xl font-serif opacity-80 inline-flex flex-col 
+    @apply italic text-xl font-serif opacity-80 inline-flex flex-col 
     items-center left-1 right-2 text-white bg-gray-500/30 rounded p-2;
 }
 
