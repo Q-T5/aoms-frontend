@@ -2,27 +2,45 @@
   <div style="background-image: url('/src/assets/login_wallpaper.jpg')">
     <div class="grid h-screen place-items-center backdrop-blur-sm">
       <div class="w-[40rem] shadow-xl rounded flex">
-        <div class="p-2">
+        <div class="p-2 w-full">
           <h1 class="text-3xl font-roboto tracking-wide text-center text-white">SYSTEM LOGIN</h1>
-          <form class="flex flex-col space-y-3">
-            <div class="inline-flex flex-col space-y-1">
-              <p class="quote">
-                "Animals are such agreeable friends—they ask no questions; they pass no criticisms."<br />
-                <span class="self-end text-lg mr-1">~ By: George Eliot</span>
-              </p>
+          <form class="flex flex-col space-y-2 w-full" @submit.prevent>
+            <div class="flex flex-col">
               <label for="username-box" class="form-labels">Staff ID</label>
               <input type="text" id="username-box" placeholder="enter staff id" 
               class="form-input-boxes text-white text-lg" v-model="userCredentials.staffId" ref="usernameRef" />
             </div>
-            <div class="inline-flex flex-col space-y-1 relative">
+            <div class="flex flex-col space-y-1 relative">
               <label for="password-box" class="form-labels">Password</label>
               <input :type="inputType" id="password-box" class="form-input-boxes text-white text-lg" 
-              placeholder="enter password" v-model="userCredentials.password" />
+              placeholder="enter password" v-model="userCredentials.password" :disabled="forgotPassword" />
               <font-awesome-icon icon="fa-solid fa-eye" class="absolute bottom-[15px] right-2" 
               @click="inputType == 'password' ? inputType = 'text' : inputType = 'password' " />
             </div>
-              <router-link :to="{ 'name': 'GeneralView' }" type="submit" class="login-button" 
-              @click="login()">Login</router-link>
+            <router-link :to="{ 'name': 'GeneralView' }" type="submit" class="login-button" 
+            @click="login()">Login</router-link>
+            <div class="flex flex-col space-y-1 relative">
+              <div class="w-full flex space-x-2 justify-center">
+                <label for="forgot-password" class="form-labels">Forgot Password: </label>
+                <input type="checkbox" id="forgot-password" class="daisyui-checkbox daisyui-checkbox-secondary daisyui-checkbox-sm rounded border-blue-500" v-model="forgotPassword" />
+              </div>
+              <div class="flex w-full flex-col" v-show="forgotPassword">
+                <div class="flex w-full justify-between space-x-4">
+                  <div class="w-1/2 flex flex-col">
+                    <label for="new-password" class="form-labels">New Password</label>
+                    <input type="password" id="new-password" placeholder="type new password" 
+                    v-model="passwordResetCredentials.newPassword" class="form-input-boxes" />
+                  </div>
+                  <div class="w-1/2 flex flex-col">
+                    <label for="conf-new-pass" class="form-labels">Confirm New Password</label>
+                    <input type="password" id="conf-new-pass" placeholder="retype new password" 
+                    v-model="passwordResetCredentials.confirmNewPassword" class="form-input-boxes" />
+                  </div>
+                </div>
+                <button class="passreset-button" @click="resetPassword"
+                :disabled="this.userCredentials.staffId === '' || this.passwordResetCredentials.newPassword === '' || this.passwordResetCredentials.confirmNewPassword === '' || this.passwordResetCredentials.newPassword !== this.passwordResetCredentials.confirmNewPassword">Reset Password</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -38,20 +56,26 @@
 
 <script>
 export default {
-  "name": "Login",
+  name: "Login",
   data() {
     return {
       "userCredentials": {
         "staffId": "",
         "password": "",
       },
-      "inputType": "password"
+      "inputType": "password",
+      forgotPassword: false,
+      passwordResetCredentials: {
+        newPassword: "",
+        confirmNewPassword: ""
+      },
+      disablePasswordField: false,
     }
   },
   "methods": {
     login() {
       if(this.userCredentials.staffId !== "" && this.userCredentials.password !== "") {
-        fetch("http://localhost:8080/api/auth/signin", {
+        fetch("/api/auth/signin", {
           "method": "POST",
           "headers": {
             "Content-Type": "application/json"
@@ -73,10 +97,30 @@ export default {
       } else {
         this.$store.commit("displayNotification", ["please enter your logins", "daisyui-alert-error", "error.svg"]);
       }
+    },
+    resetPassword: function() {
+      const resetObject = {
+        staffId: this.userCredentials.staffId,
+        newPassword: this.passwordResetCredentials.newPassword
+      }
+
+      fetch("/api/auth/passReset", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(resetObject)
+      }).then((response) => {
+        if(response.status !== 200) {
+          this.$store.commit("displayNotification", ["error reseting password, please try again", "daisyui-alert-error", "error.svg"]);
+        }
+        this.$store.commit("displayNotification", ["successfully reset your password", "daisyui-alert-success", "success.svg"]);
+        this.forgotPassword = false
+      })
     }
   },
   mounted() {
     this.$refs.usernameRef.focus();
-  }
+  },
 }
 </script>
