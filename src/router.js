@@ -34,7 +34,7 @@ const router = createRouter({
                 },
                 {
                     "path": "/dashboard/users",
-                    "component": () => import("/src/views/UserSettings.vue"),
+                    "component": () => import("/src/views/UserManagement.vue"),
                     "name": "UserSettings"
                 },
             ]
