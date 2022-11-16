@@ -7,11 +7,9 @@ export default {
                 firstName: "",
                 lastName: "",
                 password: "",
-                accountStatus: true,
-                staffRole: [],
-                recoveryPhrase: ""
+                accountActive: true,
+                staffRoles: [],
             },
-            displayEditButtons: false,
             staffList: []
         }
     },
@@ -33,9 +31,8 @@ export default {
                     this.$store.commit("displayNotification", ["failed to create new user account", "daisyui-alert-error", "error.svg"]);
                 }
                 this.$store.commit("displayNotification", ["successfully created new user account", "daisyui-alert-success", "success.svg"]);
+                this.staffList.push(this.staff);
                 return response.json();
-            }).then((data) => {
-                console.log(`Data saved is: ${ JSON.stringify(data, null, 2) }`);
             }).catch((error) => {
                 this.$store.commit("displayNotification", ["error creating new user account", "daisyui-alert-error", "error.svg"]);
             })
@@ -61,7 +58,6 @@ export default {
         },
         getAllStaff: function(page) {
             const authToken = this.$store.getters.getAuthToken;
-            console.log("Auth token: " + authToken);
             fetch(`/api/user/getAllUsers?page=${page}`, {
                 method: "GET",
                 headers: {
@@ -74,10 +70,29 @@ export default {
 
                 return response.json();
             }).then((data) => {
-                data.forEach((staff, index) => {
+                data.forEach((staff) => {
                     this.staffList.push(staff);
                 });
-                console.log(`Retrieved list: ${ JSON.stringify(this.staffList, null, 2) }`);
+            }).catch((error) => {
+                this.$store.commit("displayNotification", ["server responded with an error", "daisyui-alert-error", "error.svg"]);
+            })
+        },
+        deleteStaff: function(staffId, index) {
+            const authToken = this.$store.getters.getAuthToken;
+            console.log(`Deletign staff with id: ${staffId} and removing from index: ${index}`);
+            fetch(`/api/user/deleteUser?staffId=${staffId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: authToken
+                }
+            }).then((response) => {
+                if(response.status !== 200) {
+                    this.$store.commit("displayNotification", ["error deleting that staff record", "daisyui-alert-error", "error.svg"]);
+                }
+                this.$store.commit("displayNotification", ["deleted staff record with that id", "daisyui-alert-success", "success.svg"]);
+                this.staffList.splice(index, 1);
+            }).catch((error) => {
+                this.$store.commit("displayNotification", ["server responded with an error", "daisyui-alert-error", "error.svg"]);
             })
         }
     },
