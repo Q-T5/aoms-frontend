@@ -34,7 +34,7 @@ const notifModule = {
 
             setTimeout(() => {
                 state.showNotif = false;
-            }, 2700)
+            }, 3000)
         }
     }
 }
