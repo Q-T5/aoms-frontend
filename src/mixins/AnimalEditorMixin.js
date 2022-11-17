@@ -2,45 +2,40 @@ import MedProg from '../medicalprogress.js'
 export default {
     data() {
         return {
-            "action": "create",
-            "animal": {
-                "animalId": null,
-                "commonName": "",
-                "dateBrought": null,
-                "petName": "",
-                "age": null,
-                "animalDetail": {
-                    "animalId": null,
-                    "dateAdopted": null,
-                    "adopteeName": "",
-                    "contactNumber": "",
-                    "residentialLocation": ""
+            action: "create",
+            animal: {
+                animalId: null,
+                commonName: "",
+                age: null,
+                dateBrought: null,
+                animalDetail: {
+                    animalId: null,
+                    dateAdopted: null,
+                    adopteeName: "",
+                    contactNumber: "",
+                    residentialLocation: ""
                 }
             },
-            "animalProgress": {
-                "animalId": null,
-                "clinicalState": {
-                    "weight": null,
-                    "numberOfChildren": null,
-                    "medicalState": ""
-                },
-                "whereFound": "",
-                "foods": "",
-                "medicalProgress": [/**is an array of medProg objects */]
+            animalProgress: {
+                animalId: null,
+                whereFound: "",
+                foods: "",
+                weight: 0.0,
+                medicalProgress: [/**is an array of medProg objects */]
             },
-            "medProg": {
-                "checkupDate": null,
-                "checkupNotes": "",
-                "nextCheckupDate": null
+            medProg: {
+                checkupDate: null,
+                checkupNotes: "",
+                nextCheckupDate: null
             },
-            "medProgRec": {
-                "checkupDate": null,
-                "checkupNotes": "",
-                "nextCheckupDate": null
+            medProgRec: {
+                checkupDate: null,
+                checkupNotes: "",
+                nextCheckupDate: null
             },
-            "displayFormError": false,
-            "showEntryForm": false,
-            "currentRecord": null
+            displayFormError: false,
+            showEntryForm: false,
+            currentRecord: null
         }
     },
     "methods": {
