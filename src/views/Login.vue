@@ -1,5 +1,5 @@
 <template>
-  <div style="background-image: url('/src/assets/login_wallpaper.jpg')">
+  <div style="background-image: url('/src/assets/login_wallpaper.jpg');">
     <div class="grid h-screen place-items-center backdrop-blur-sm">
       <div class="w-[40rem] shadow-xl rounded flex">
         <div class="p-2 w-full">
@@ -18,7 +18,7 @@
               @click="inputType == 'password' ? inputType = 'text' : inputType = 'password' " />
             </div>
             <router-link :to="{ 'name': 'GeneralView' }" type="submit" class="login-button" 
-            @click="login()">Login</router-link>
+            @click="login">Login</router-link>
             <div class="flex flex-col space-y-1 relative">
               <div class="w-full flex space-x-2 justify-center">
                 <label for="forgot-password" class="form-labels">Forgot Password: </label>
@@ -38,7 +38,11 @@
                   </div>
                 </div>
                 <button class="passreset-button" @click="resetPassword"
-                :disabled="this.userCredentials.staffId === '' || this.passwordResetCredentials.newPassword === '' || this.passwordResetCredentials.confirmNewPassword === '' || this.passwordResetCredentials.newPassword !== this.passwordResetCredentials.confirmNewPassword">Reset Password</button>
+                :disabled="
+                this.userCredentials.staffId === '' || 
+                this.passwordResetCredentials.newPassword === '' || 
+                this.passwordResetCredentials.confirmNewPassword === '' || 
+                this.passwordResetCredentials.newPassword !== this.passwordResetCredentials.confirmNewPassword">Reset Password</button>
               </div>
             </div>
           </form>
@@ -59,11 +63,11 @@ export default {
   name: "Login",
   data() {
     return {
-      "userCredentials": {
-        "staffId": "",
-        "password": "",
+      userCredentials: {
+        staffId: "",
+        password: "",
       },
-      "inputType": "password",
+      inputType: "password",
       forgotPassword: false,
       passwordResetCredentials: {
         newPassword: "",
@@ -73,30 +77,26 @@ export default {
     }
   },
   "methods": {
-    login() {
-      if(this.userCredentials.staffId !== "" && this.userCredentials.password !== "") {
-        fetch("/api/auth/signin", {
-          "method": "POST",
-          "headers": {
-            "Content-Type": "application/json"
-          },
-          "body": JSON.stringify(this.userCredentials)
-        }).then((response) => {
-          if(response.status === 200) {
-            return response.json();
-          } else if(response.status === 500) {
-            this.$store.commit("displayNotification", ["invalid login credentials", "daisyui-alert-error", "error.svg"]);
-          }
-        }).then((data) => {
-          this.$store.commit("LOGIN_USER", data);
-          this.$store.commit("displayNotification", ["successful login", "daisyui-alert-success", "success.svg"]);
-          this.$router.push({ name: "GeneralView" });
-        }).catch((error) => {
-          console.log(`${ error }: Failed to log you in`);
-        })
-      } else {
-        this.$store.commit("displayNotification", ["please enter your logins", "daisyui-alert-error", "error.svg"]);
-      }
+    login: function() {
+      fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.userCredentials)
+      }).then((response) => {
+        if(response.status !== 200) {
+          throw "error login you in";
+        } else {
+          return response.json();
+        } 
+      }).then((data) => {
+        this.$store.commit("LOGIN_USER", data);
+        this.$store.commit("displayNotification", ["successful login", "daisyui-alert-success", "success.svg"]);
+        this.$router.push({ name: "GeneralView" });
+      }).catch((error) => {
+        this.$store.commit("displayNotification", ["server responded with an error", "daisyui-alert-error", "error.svg"]);
+      });
     },
     resetPassword: function() {
       const resetObject = {
