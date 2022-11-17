@@ -6,6 +6,7 @@ export default {
             animal: {
                 animalId: null,
                 commonName: "",
+                whereFound: "",
                 age: null,
                 dateBrought: null,
                 animalDetail: {
@@ -18,7 +19,6 @@ export default {
             },
             animalProgress: {
                 animalId: null,
-                whereFound: "",
                 foods: "",
                 weight: 0.0,
                 medicalProgress: [/**is an array of medProg objects */]
@@ -33,7 +33,6 @@ export default {
                 checkupNotes: "",
                 nextCheckupDate: null
             },
-            displayFormError: false,
             showEntryForm: false,
             currentRecord: null
         }
@@ -42,10 +41,9 @@ export default {
         createNewAnimal() {
             const authToken = this.$store.getters.getAuthToken;
             if(this.animal.commonName === "" || this.animal.age === null || this.animal.animalDetail.dateBrought === null) {
-              this.displayFormError = true;
+                this.$store.commit("displayNotification", ["fill all required fields", "daisyui-alert-warning", "alert.svg"]);
             } else {
               this.displayFormError = false;
-              console.log("Animal details: " + JSON.stringify(this.animal, null, 2));
               fetch("/api/animals/createAnimal", {
                 "method": "POST",
                 "headers": {
@@ -100,7 +98,7 @@ export default {
                     this.animalProgress.animalId = data.id;
                 })
                 .catch((error) => {
-                    this.$store.commit("displayNotification", ["failed to update this record", "daisyui-alert-error", "success.svg"]);
+                    this.$store.commit("displayNotification", ["failed to update this record", "daisyui-alert-error", "error.svg"]);
                 })
             }
         },
@@ -171,15 +169,16 @@ export default {
         getMedicalRecord(id) {
             const authToken = this.$store.getters.getAuthToken;
             fetch(`/api/animals/getAnimalRecord/${id}`, {
-                "method": "GET",
-                "headers": {
-                    "Authorization": authToken
+                method: "GET",
+                headers: {
+                    Authorization: authToken
                 }
             })
             .then((response) => {
                 return response.json();
             })
             .then((data) => {
+                console.log(`Animal's medical progress so far: ${JSON.stringify(data, null, 2)}`);
                 this.animalProgress = data;
                 this.scrollThroughRecords();
             })
