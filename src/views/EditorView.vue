@@ -1,15 +1,9 @@
 <template>
   <div class="flex flex-col items-center py-2">
     <div class="w-4/5">
-      <!-- form for basic data required to create an animal -->
-      <h1 class="text-2xl font-roboto tracking-wide text-center">Animal Details</h1>
-      <div class="w-full flex justify-center my-1" v-show="displayFormError" >
-        <div class="form-error-notif">
-          <img src="/src/assets/error.svg" alt="success-icon" class="w-6" />
-          <p>Fill all fields in this section</p>
-        </div>
-      </div>
-      <form @submit.prevent="onSubmit">
+      <!-- form for basic data required to create an animal record -->
+      <h1 class="text-2xl font-roboto tracking-wide text-center">Basic Records</h1>
+      <form @submit.prevent>
         <div class="flex flex-col">
           <label for="animal-id" class="form-labels">Animal ID</label>
           <input type="text" id="animal-id" placeholder="will be auto-generated" disabled v-model="animal.animalId"
@@ -17,15 +11,15 @@
         </div>
         <div class="flex space-x-8 mt-1">
           <div class="w-1/2 flex flex-col">
-            <label for="pet-name" class="form-labels">Pet Name</label>
-            <input type="text" id="pet-name" placeholder="e.g Sunny or Rufus" v-model="animal.petName"
-            class="form-input-boxes" ref="petnameRef" />
-          </div>
-          <div class="w-1/2 flex flex-col">
-            <label for="common-name" class="form-labels">Common Name</label>
+            <label for="common-name" class="form-labels" ref="commonNameRef">Common Name</label>
             <input type="text" id="common-name" placeholder="e.g dog or cat" 
             v-model="animal.commonName" class="form-input-boxes" />
           </div>
+          <div class="flex flex-col w-1/2">
+            <label for="where-found" class="form-labels">Where Found</label>
+            <input type="text" id="where-found" placeholder="e.g MiddleOf Nowhere, GlassCounty" 
+            v-model="animal.whereFound" class="form-input-boxes" />
+        </div>
         </div>
         <div class="flex space-x-8 mt-1">
           <div class="w-1/2 flex flex-col">
@@ -40,10 +34,10 @@
       </form>
     </div>
 
-    <!-- form for animal records -->
+    <!-- form for an animal adoption records -->
     <div class="w-4/5">
-      <h1 class="text-2xl font-roboto tracking-wide text-center">Animal Adoption Details</h1>
-      <form @submit.prevent="onSubmit">
+      <h1 class="text-2xl font-roboto tracking-wide text-center">Adoption Records</h1>
+      <form @submit.prevent>
         <div class="flex space-x-8">
           <div class="w-1/2 flex flex-col">
             <label for="animal-id" class="form-labels">Animal Id</label>
@@ -82,9 +76,9 @@
       </form>
     </div>
 
-    <!-- form for animal progress records -->
+    <!-- form for animal health progress records -->
     <div class="w-4/5">
-      <h1 class="text-2xl font-roboto tracking-wide text-center">Medical Progress Records</h1>
+      <h1 class="text-2xl font-roboto tracking-wide text-center">Medical Records</h1>
       <form @submit.prevent="onSubmit">
         <div class="flex justify-end mt-1">
           <button v-if="action === 'create'" class="save-or-update-button" @click="createNewMedRecord">Save</button>
@@ -95,36 +89,19 @@
           <input type="text" id="animal-id" placeholder="will be auto-generated" v-model="animalProgress.animalId"
           class="disabled-inputs" disabled />
         </div>
+        <div class="flex space-x-8 mt-1">
+          <div class="flex flex-col w-1/2">
+            <label for="foods" class="form-labels">Foods</label>
+            <input type="text" id="foods" placeholder="separate list with comma" 
+            v-model="animalProgress.foods" class="form-input-boxes" />
+          </div>
+          <div class="w-1/2 flex flex-col">
+            <label for="animal-weight" class="form-labels">Weight</label>
+            <input type="text" id="animal-weight" placeholder="animal's weight(Kg)" 
+            v-model="animalProgress.weight" class="form-input-boxes" />
+          </div>
+        </div>
         <div class="flex flex-col mt-1">
-          <div class="flex space-x-8">
-            <div class="w-1/2 flex flex-col">
-              <label for="animal-weight" class="form-labels">Weight</label>
-              <input type="text" id="animal-weight" placeholder="animal's weight(Kg)" 
-              v-model="animalProgress.clinicalState.weight" class="form-input-boxes" />
-            </div>
-            <div class="w-1/2 flex flex-col">
-              <label for="number-of-children" class="form-labels">Number of Children</label>
-              <input type="text" id="number-of-children" placeholder="e.g 2" 
-              v-model="animalProgress.clinicalState.numberOfChildren" class="form-input-boxes" />
-            </div>
-          </div>
-          <div class="flex flex-col mt-1">
-            <label for="medical-state" class="form-labels">Medical State</label>
-            <input type="text" id="medical-state" placeholder="e.g has broken nose" 
-            v-model="animalProgress.clinicalState.medicalState" class="form-input-boxes" />
-          </div>
-          <div class="flex space-x-8 mt-1">
-            <div class="flex flex-col w-1/2">
-              <label for="where-found" class="form-labels">Where Found</label>
-              <input type="text" id="where-found" placeholder="e.g MiddleOf Nowhere, GlassCounty" 
-              v-model="animalProgress.whereFound" class="form-input-boxes" />
-            </div>
-            <div class="flex flex-col w-1/2">
-              <label for="foods" class="form-labels">Foods</label>
-              <input type="text" id="foods" placeholder="separate list with comma" 
-              v-model="animalProgress.foods" class="form-input-boxes" />
-            </div>
-          </div>
           <div class="mt-2 px-[2.5rem] rounded-sm relative">
             <h1 class="text-lg font-roboto tracking-wide text-center">Checkup Updates</h1>
             <button class="scroll-buttons" id="btn-previous" @click="showPreviousRecord"
@@ -184,15 +161,14 @@ export default {
   "name": "EditorView",
   "mixins": [AnimalEditorMixin],
   mounted() {
-    this.$refs.petnameRef.focus();
+    this.$refs.commonNameRef.focus();
     this.emitter.on("updateThisAnimal", (targetAnimal) => {
       this.action = "update";
-      this.displayFormError = false;
       this.animal = targetAnimal;
       this.animal.animalId = targetAnimal.animalId;
       this.animal.animalDetail.animalId = targetAnimal.animalDetail.animalId;
       this.animalProgress.animalId = targetAnimal.animalId;
-      this.getMedicalRecord(targetAnimal.id);
+      this.getMedicalRecord(targetAnimal.animalId);
     })
   }
 }
