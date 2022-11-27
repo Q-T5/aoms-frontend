@@ -4,7 +4,7 @@
       <div class="w-[40rem] shadow-xl rounded flex">
         <div class="p-2 w-full">
           <h1 class="text-3xl font-roboto tracking-wide text-center text-white">SYSTEM LOGIN</h1>
-          <form class="flex flex-col space-y-2 w-full" @submit.prevent>
+          <form class="flex flex-col space-y-2 w-full" @submit.prevent @keypress.enter="login">
             <div class="flex flex-col">
               <label for="username-box" class="form-labels">Staff ID</label>
               <input type="text" id="username-box" placeholder="enter staff id" 
@@ -118,7 +118,7 @@ export default {
         this.forgotPassword = false
       })
     }
-  },
+  },  
   mounted() {
     this.$refs.usernameRef.focus();
   },
