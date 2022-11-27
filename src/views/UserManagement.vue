@@ -64,10 +64,6 @@
       </form>
     </div>
     <div class="w-[49%] h-full py-2 rounded-lg shadow-sm shadow-gray-700 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 flex flex-col p-2">
-      <div class="w-full h-fit relative">
-        <input type="text" name="staff-id" maxlength="25" placeholder="Search Staff By Id" class="search-system-users" />
-        <button class="search-button rounded-md top-1 mr-1">Search</button>
-      </div>
       <div class=" flex flex-wrap py-1 justify-around h-full overflow-scroll scrollbar-thin scrollbar-thumb-gray-500">
         <div class="w-[48%] h-fit border-[1px] border-blue-500 p-2 rounded-lg"
         @mouseenter="displayEditButtons = true" @mouseleave="displayEditButtons = false" v-for="(staff, index) in staffList" :key="index">
