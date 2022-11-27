@@ -51,21 +51,6 @@ const animalMedicalRecordsModule = {
     }
 }
 
-const themeModule = {
-    "mutations": {
-        changeAppTheme() {
-            const targetElement = document.getElementById("theme-switcher");
-            const attributeValue = targetElement.getAttribute("data-theme");
-
-            if(attributeValue === "black") {
-                targetElement.setAttribute("data-theme", "garden");
-            } else if(attributeValue === "garden") {
-                targetElement.setAttribute("data-theme", "black");
-            }
-        }
-    }
-}
-
 const userManagementModule = {
     state() {
         return {
