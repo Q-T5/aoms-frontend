@@ -1,9 +1,8 @@
 <template>
   <div class="flex flex-col p-2">
     <div class="relative border-blue-500 border-[1px] rounded-full self-center outline-none mb-0.5 w-fit">
-      <input type="number" placeholder="Search by animal id... " class="search-box" maxlength="25"
-      v-model="searchId" />
-      <button class="search-button">Search</button>
+      <input type="text" placeholder="Search by animal id or common name... " class="search-box" maxlength="25"
+      v-model="searchVal" />
     </div>
     <div class="flex flex-col justify-between h-full">
       <table class="w-full">
@@ -16,7 +15,7 @@
           <th class="table-headers">Date Brought</th>
           <th class="text-base py-0 text-center font-roboto font-normal text-white">Action</th>
         </tr>
-        <tr class="table-row" v-for="(animal, index) in animalList" :key="animal.index">
+        <tr class="table-row" v-for="(animal, index) in filteredRows" :key="animal.index">
           <td> <img src="../assets/animal-pic-placeholder.svg" alt="animal-picture" class="w-14 ml-7 border-[1px] border-blue-500 rounded-md"> </td>
           <td> {{ animal.animalId }} </td>
           <td> {{ animal.petName }}</td>
@@ -46,7 +45,7 @@ export default {
   data() {
     return {
       "animalList": [],
-      "searchId": ""
+      "searchVal": "",
     }
   },
   "methods": {
@@ -101,6 +100,14 @@ export default {
     },
     updateAnimal(index) {
       this.emitter.emit("updateThisAnimal", this.animalList[index]);
+    },
+  },
+  computed: {
+    filteredRows() {
+      return this.animalList.filter(animal => {
+        const id = animal.animalId.toString();
+        return id.startsWith(this.searchVal) || animal.commonName.startsWith(this.searchVal);
+      });
     }
   },
   mounted() {
