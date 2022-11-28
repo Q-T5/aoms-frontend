@@ -89,7 +89,7 @@ const userManagementModule = {
 
 const store = createStore({
     "modules": {
-        notifModule, animalMedicalRecordsModule, themeModule, userManagementModule
+        notifModule, animalMedicalRecordsModule, userManagementModule
     }
 })
 
