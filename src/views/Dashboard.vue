@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
-    <dashboard-sidebar class="w-[15%]" />
-    <dashboard-main-panel />
+    <dashboard-sidebar class="w-[10%]" />
+    <dashboard-main-panel class="w-[90%]" />
   </div>
 </template>
 
