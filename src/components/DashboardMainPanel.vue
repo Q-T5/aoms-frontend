@@ -6,11 +6,10 @@
         <component :is="Component" />
       </keep-alive>
       <div class="daisyui-tooltip daisyui-tooltip-top absolute bottom-1 right-48" 
-      :data-tip="$route.path === '/dashboard/animals/list-view' ? 'refresh list' : 'add new animals'">
+      :data-tip="$route.path === '/dashboard/animals/list-view' ||  $route.path === '/dashboard/animals/general-view' ? 'refresh' : 'add new'">
         <button class="daisyui-btn daisyui-btn-square rounded-md" @click="componentRemount++" 
-        :to="{ name: 'AnimalEditor' }" 
-        v-show="$route.path !== '/dashboard/animals/general-view' && $route.path !== '/dashboard/users'">
-        <font-awesome-icon :icon="$route.path === '/dashboard/animals/list-view'? 'fa-solid fa-repeat' : 'fa-solid fa-add'" 
+        v-show="$route.path === '/dashboard/animals/general-view' || $route.path === '/dashboard/animals/list-view' || $route.path === '/dashboard/animals/editor-view'">
+        <font-awesome-icon :icon="$route.path === '/dashboard/animals/list-view' || $route.path === '/dashboard/animals/general-view' ? 'fa-solid fa-repeat' : 'fa-solid fa-add'" 
         class="text-xl" />
         </button>
       </div>
