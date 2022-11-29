@@ -32,7 +32,7 @@ export default {
         }
       },
       deleteAnimal(index) {
-        const idToDelete = this.animalList[index].id;
+        const idToDelete = this.animalList[index].animalId;
         const authToken = this.$store.getters.getAuthToken;
         try {
           this.$store.commit("deleteMedicalRecords", idToDelete);
