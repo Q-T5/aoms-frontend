@@ -10,10 +10,26 @@
           class="disabled-inputs" />
         </div>
         <div class="flex space-x-8 mt-1">
-          <div class="w-1/2 flex flex-col">
+          <div class="w-1/2 flex flex-col justify-between">
             <label for="common-name" class="form-labels" ref="commonNameRef">Common Name</label>
-            <input type="text" id="common-name" placeholder="e.g dog or cat" 
-            v-model="animal.commonName" class="form-input-boxes" />
+            <select name="common-names" id="common-name" v-model="animal.commonName" 
+            class="rounded-sm border-2 border-t-0 border-x-0 bg-transparent outline-none border-gray-300 focus:border-blue-500">
+              <option value="none" selected disabled hidden>Select Animal's Common Name</option>
+              <optgroup label="Adoptable Animals">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Parrot">Parrot</option>
+              </optgroup>
+              <optgroup label="Non-Adoptable Animals">
+                <option value="Lion">Lion</option>
+                <option value="Lizard-Family">Lizard Family</option>
+                <option value="Antellope">Antellope</option>
+                <option value="Gazelle">Gazelle</option>
+                <option value="Giraffe">Giraffe</option>
+                <option value="Other-Bird">Other Bird</option>
+                <option value="Ape-">Ape</option>
+              </optgroup>
+            </select>
           </div>
           <div class="flex flex-col w-1/2">
             <label for="where-found" class="form-labels">Where Found</label>
