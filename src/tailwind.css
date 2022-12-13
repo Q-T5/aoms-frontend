@@ -7,9 +7,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.router-link-active {
+/* .router-link-active {
     @apply  bg-blue-400;
-}
+} */
 
 .router-link-exact-active.active-tab {
     @apply rounded-none bg-transparent border-b-[2.5px] border-b-blue-400;

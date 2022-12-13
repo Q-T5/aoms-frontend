@@ -15,15 +15,20 @@
       <div class="w-full flex flex-col space-y-1 mt-1">
         <div class="w-full flex space-x-1">
           <div class="w-2/3 h-[26rem] border-[1px] border-blue-500 rounded-md relative">
-            <canvas><!-- adoption trend line chart --></canvas>
+            <div class="w-full flex justify-center">
+              <input type="text" id="factor" placeholder="Enter factor to predict with"
+              v-model="predictionFactor" />
+              <button @click="applyPrediction(predictionFactor)">Predict</button>
+            </div>
+            <canvas id="numberPredictor"><!-- adoption trend line chart --></canvas>
           </div>
           <div class="w-1/3 h-[26rem] border-[1px] border-blue-500 rounded-md relative">
-            <canvas><!-- horizontal bar graph diseases comparison --></canvas>
+            <canvas id="diseaseComparison"><!-- horizontal bar graph diseases comparison --></canvas>
           </div>
         </div>
-        <div class="w-full rounded-md border-[1px] border-blue-500 h-[26rem] relative">
-          <canvas><!-- animal projected population growth line graph --></canvas>
-        </div>
+        <!-- <div class="w-full rounded-md border-[1px] border-blue-500 h-[26rem] relative">
+          <canvas> animal projected population growth line graph </canvas>
+        </div> -->
       </div>
     </div>
   </div>

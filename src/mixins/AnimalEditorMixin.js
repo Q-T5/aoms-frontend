@@ -40,7 +40,7 @@ export default {
     "methods": {
         createNewAnimal() {
             const authToken = this.$store.getters.getAuthToken;
-            if(this.animal.commonName === "" || this.animal.age === null || this.animal.animalDetail.dateBrought === null) {
+            if(this.animal.commonName === "" || this.animal.animalDetail.dateBrought === null) {
                 this.$store.commit("displayNotification", ["fill all required fields", "daisyui-alert-warning", "alert.svg"]);
             } else {
               this.displayFormError = false;

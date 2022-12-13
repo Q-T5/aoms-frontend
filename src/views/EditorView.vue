@@ -27,7 +27,7 @@
                 <option value="Gazelle">Gazelle</option>
                 <option value="Giraffe">Giraffe</option>
                 <option value="Other-Bird">Other Bird</option>
-                <option value="Ape-">Ape</option>
+                <option value="Ape">Ape</option>
               </optgroup>
             </select>
           </div>
